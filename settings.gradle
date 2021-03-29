@@ -1,0 +1,3 @@
+include ':ktkit'
+include ':app'
+rootProject.name = "KtKit"
