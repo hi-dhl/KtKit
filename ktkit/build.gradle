@@ -42,3 +42,20 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+apply plugin: 'maven-publish'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.hi.dhl'
+                artifactId = 'ktkit'
+                version = '1.0.0'
+            }
+        }
+        repositories {
+            mavenLocal()
+        }
+    }
+}
