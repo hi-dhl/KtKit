@@ -16,7 +16,7 @@ object Versions {
     const val constraintlayout = "2.0.4"
     const val paging = "3.0.0-alpha02"
     const val timber = "4.7.1"
-    const val kotlin = "1.4.20"
+    const val kotlin = "1.4.31"
     const val kotlinCoroutinesCore = "1.3.7"
     const val kotlinCoroutinesAndrid = "1.3.6"
     const val koin = "2.1.5"
@@ -36,7 +36,8 @@ object Versions {
     const val hit = "2.28-alpha"
     const val hitViewModule = "1.0.0-alpha01"
     const val appStartup = "1.0.0"
-    const val material = "1.2.1"
+    const val material = "1.3.0"
+    const val binding = "1.1.3"
 }
 
 object AndroidX {
@@ -56,7 +57,7 @@ object AndroidX {
 }
 
 object Android {
-    const val meteria = "com.google.android.material:material:${Versions.material}"
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object Hilt {
@@ -85,8 +86,7 @@ object Fragment {
 }
 
 object Kt {
-    const val stdlibJdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    const val stdlibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutinesCore}"
     const val coroutinesAndroid =
@@ -120,8 +120,10 @@ object Depend {
     const val junit = "junit:junit:${Versions.junit}"
     const val androidTestJunit = "androidx.test.ext:junit:${Versions.junitExt}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
     const val jDatabinding = "com.hi-dhl:jdatabinding:${Versions.jDatabinding}"
     const val progressview = "com.hi-dhl:progressview:${Versions.progressview}"
-    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val binding = "com.hi-dhl:binding:${Versions.binding}"
 }
 
