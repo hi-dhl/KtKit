@@ -1,12 +1,9 @@
 package com.hi.dhl.demo.ktkit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
-import com.hi.dhl.ktkit.ui.gone
-import com.hi.dhl.ktkit.ui.invisible
-import com.hi.dhl.ktkit.ui.visible
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,9 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         with(binding) {
-            btnClick.visible()
-            btnClick.gone()
-            btnClick.invisible()
+            btnProfile.setOnClickListener {
+                ProfileActivity.startActivity(this@MainActivity)
+            }
         }
     }
 }
