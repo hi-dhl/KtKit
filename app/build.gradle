@@ -55,3 +55,5 @@ dependencies {
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore
 }
+
+apply from: "$rootDir/spotless.gradle"

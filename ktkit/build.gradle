@@ -54,19 +54,4 @@ dependencies {
     androidTestImplementation Depend.espressoCore
 }
 
-apply plugin: 'maven-publish'
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.hi.dhl'
-                artifactId = 'ktkit'
-                version = '1.0.0'
-            }
-        }
-        repositories {
-            mavenLocal()
-        }
-    }
-}
+apply from: "$rootDir/spotless.gradle"
