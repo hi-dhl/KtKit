@@ -54,3 +54,5 @@ dependencies {
 }
 
 apply from: "$rootDir/spotless.gradle"
+
+apply from: 'gradle-mvn-push.gradle'
