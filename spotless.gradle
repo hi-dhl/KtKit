@@ -1,0 +1,37 @@
+apply plugin: "com.diffplug.spotless"
+
+// 执行 commit 之前需要执行 ./gradlew spotlessApply  会按照定义好的规则去格式化项目
+// 规则参考：https://github.com/diffplug/spotless/tree/master/plugin-gradle
+
+spotless {
+    kotlin {
+        target '**/*.kt'
+        ktlint('0.40.0').userData(['disabled_rules': 'no-wildcard-imports'])
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    java {
+        target '**/*.java'
+        googleJavaFormat().aosp()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    format 'xml', {
+        target '**/*.xml'
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
