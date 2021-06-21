@@ -14,21 +14,19 @@ import android.os.Parcelable
  * </pre>
  */
 
-
 inline fun <reified T : Any> Activity.intent(
-        key: String,
-        crossinline defaultValue: () -> T
+    key: String,
+    crossinline defaultValue: () -> T
 ) = lazy(LazyThreadSafetyMode.NONE) {
     val value = intent?.extras?.get(key)
     if (value is T) value else defaultValue()
 }
 
 inline fun <reified T : Any> Activity.intent(
-        key: String
+    key: String
 ) = lazy(LazyThreadSafetyMode.NONE) {
     intent?.extras?.get(key)
 }
-
 
 inline fun <reified T : Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
@@ -46,19 +44,22 @@ inline fun <reified T : Any> Context.startActivity(params: () -> Array<out Pair<
 }
 
 inline fun <reified T : Any> Context.startActivityForResult(
-        requestCode: Int,
-        vararg params: Pair<String, Any>
+    requestCode: Int,
+    vararg params: Pair<String, Any>
 ) {
     if (this is Activity) {
-        startActivityForResult(makeIntent(this, T::class.java) {
-            params
-        }, requestCode)
+        startActivityForResult(
+            makeIntent(this, T::class.java) {
+                params
+            },
+            requestCode
+        )
     }
 }
 
 inline fun <reified T : Any> Context.startActivityForResult(
-        requestCode: Int,
-        params: () -> Array<out Pair<String, Any>>
+    requestCode: Int,
+    params: () -> Array<out Pair<String, Any>>
 ) {
     if (this is Activity) {
         startActivityForResult(makeIntent(this, T::class.java, params), requestCode)
@@ -66,9 +67,9 @@ inline fun <reified T : Any> Context.startActivityForResult(
 }
 
 inline fun makeIntent(
-        context: Context,
-        targetClass: Class<*>,
-        params: () -> Array<out Pair<String, Any>>
+    context: Context,
+    targetClass: Class<*>,
+    params: () -> Array<out Pair<String, Any>>
 ): Intent = with(Intent(context, targetClass)) {
     params().forEach {
         val value = it.second

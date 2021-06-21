@@ -38,4 +38,3 @@ inline fun String.isIPAddress(): Boolean {
 inline fun String.isDomainName(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.DOMAIN_NAME.matcher(this).matches()
 }
-

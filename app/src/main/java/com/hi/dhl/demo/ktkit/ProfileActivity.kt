@@ -29,9 +29,8 @@ class ProfileActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         with(binding) {
-            textResult.setText(
-                "userNnam = ${userName}   " + "userPassword = ${userPassword} + people = ${peopleModel.toString()}"
-            )
+            val content = "userNnam = $userName   " + "userPassword = $userPassword + people = $peopleModel"
+            textResult.setText(content)
         }
     }
 

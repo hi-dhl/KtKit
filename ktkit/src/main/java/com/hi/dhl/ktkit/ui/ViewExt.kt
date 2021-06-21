@@ -26,7 +26,8 @@ fun View.showLongSnackbar(message: String) {
 }
 
 fun View.snackBarWithAction(
-    message: String, actionlable: String,
+    message: String,
+    actionlable: String,
     block: () -> Unit
 ) {
     Snackbar.make(this, message, Snackbar.LENGTH_LONG)
