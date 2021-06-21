@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityProfileBinding
 import com.hi.dhl.demo.ktkit.model.PeopleModel
-import com.hi.dhl.ktkit.ui.getValue
+import com.hi.dhl.ktkit.ui.intent
 import com.hi.dhl.ktkit.ui.startActivity
 
 /**
@@ -19,11 +19,11 @@ import com.hi.dhl.ktkit.ui.startActivity
 class ProfileActivity : Activity() {
     private val binding by viewbind<ActivityProfileBinding>()
 
-    private val userName by getValue<String>(KEY_USER_NAME) {
+    private val userName by intent<String>(KEY_USER_NAME) {
         "default"
     }
-    private val userPassword by getValue<String>(KEY_USER_PASSWORD)
-    private val peopleModel by getValue<PeopleModel>(KEY_PEOPLE_PARCELIZE)
+    private val userPassword by intent<String>(KEY_USER_PASSWORD)
+    private val peopleModel by intent<PeopleModel>(KEY_PEOPLE_PARCELIZE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
