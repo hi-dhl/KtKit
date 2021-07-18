@@ -14,63 +14,213 @@ import android.os.Parcelable
  * </pre>
  */
 
+/**
+ *  usage：
+ *
+ *   private val userName by intent<String>(KEY_USER_NAME) {
+ *        "default"
+ *  }
+ *
+ */
 inline fun <reified T : Any> Activity.intent(
-    key: String,
-    crossinline defaultValue: () -> T
+        key: String,
+        crossinline defaultValue: () -> T
 ) = lazy(LazyThreadSafetyMode.NONE) {
     val value = intent?.extras?.get(key)
     if (value is T) value else defaultValue()
 }
 
+/**
+ *  usage：
+ *
+ *  private val userName by intent<String>(KEY_USER_NAME)
+ *
+ */
 inline fun <reified T : Any> Activity.intent(
-    key: String
+        key: String
 ) = lazy(LazyThreadSafetyMode.NONE) {
     intent?.extras?.get(key)
 }
 
+/**
+ *  usage：
+ *
+ *  context.startActivity<ProfileActivity>
+ *
+ */
 inline fun <reified T : Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
     startActivity(intent)
 }
 
+/**
+ *
+ *  usage：
+ *
+ *  context.startActivity<ProfileActivity>(
+ *      KEY_USER_NAME to "ByteCode",
+ *      KEY_USER_PASSWORD to "1024"
+ *  )
+ *
+ */
 inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<String, Any>) {
     startActivity<T> {
         params
     }
 }
 
+/**
+ *
+ *  usage：
+ *
+ *  context.startActivity<ProfileActivity> {
+ *      arrayOf(
+ *          KEY_USER_NAME to "ByteCode",
+ *          KEY_USER_PASSWORD to "1024",
+ *          KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *      )
+ *  }
+ *
+ */
 inline fun <reified T : Any> Context.startActivity(params: () -> Array<out Pair<String, Any>>) {
     startActivity(makeIntent(this, T::class.java, params))
 }
 
+/**
+ *
+ *  usage：
+ *
+ *  context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE,
+ *      KEY_USER_NAME to "ByteCode",
+ *      KEY_USER_PASSWORD to "1024",
+ *      KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *  )
+ *
+ */
+
 inline fun <reified T : Any> Context.startActivityForResult(
-    requestCode: Int,
-    vararg params: Pair<String, Any>
+        requestCode: Int,
+        vararg params: Pair<String, Any>
 ) {
     if (this is Activity) {
-        startActivityForResult(
-            makeIntent(this, T::class.java) {
-                params
-            },
-            requestCode
-        )
+        val intent = makeIntent(this, T::class.java) {
+            params
+        }
+        startActivityForResult(intent, requestCode)
     }
 }
 
+/**
+ *
+ *  usage：
+ *
+ *  context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE) {
+ *      arrayOf(
+ *          KEY_USER_NAME to "ByteCode",
+ *          KEY_USER_PASSWORD to "1024",
+ *          KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *      )
+ *  }
+ *
+ */
 inline fun <reified T : Any> Context.startActivityForResult(
-    requestCode: Int,
-    params: () -> Array<out Pair<String, Any>>
+        requestCode: Int,
+        params: () -> Array<out Pair<String, Any>>
 ) {
     if (this is Activity) {
-        startActivityForResult(makeIntent(this, T::class.java, params), requestCode)
+        val intent = makeIntent(this, T::class.java, params)
+        startActivityForResult(intent, requestCode)
     }
 }
+
+/**
+ *
+ *  usage：
+ *
+ *  setActivityResult(
+ *      Activity.RESULT_OK,
+ *          KEY_RESULT to "success",
+ *          KEY_USER_NAME to "ByteCode"
+ *      )
+ *
+ */
+inline fun Context.setActivityResult(
+        resultCode: Int = Activity.RESULT_OK,
+        vararg params: Pair<String, Any>
+) {
+    if (this is Activity) {
+        val intent = makeIntent {
+            params
+        }
+        setResult(resultCode, intent)
+    }
+}
+
+/**
+ *
+ *  usage：
+ *
+ *  setActivityResult(Activity.RESULT_OK) {
+ *      arrayOf(
+ *          KEY_RESULT to "success"
+ *      )
+ *  }
+ *
+ */
+inline fun Context.setActivityResult(
+        resultCode: Int = Activity.RESULT_OK,
+        params: () -> Array<out Pair<String, Any>>
+) {
+    if (this is Activity) {
+        setResult(resultCode, makeIntent(params))
+    }
+}
+
+// 感谢 Kotlin/anko
+inline fun makeIntent(
+        context: Context,
+        targetClass: Class<*>,
+        params: () -> Array<out Pair<String, Any>>
+): Intent = with(Intent(context, targetClass)) {
+    params().forEach {
+        val value = it.second
+        // from anko
+        when (value) {
+            is Int -> putExtra(it.first, value)
+            is Long -> putExtra(it.first, value)
+            is CharSequence -> putExtra(it.first, value)
+            is String -> putExtra(it.first, value)
+            is Float -> putExtra(it.first, value)
+            is Double -> putExtra(it.first, value)
+            is Char -> putExtra(it.first, value)
+            is Short -> putExtra(it.first, value)
+            is Boolean -> putExtra(it.first, value)
+            is java.io.Serializable -> putExtra(it.first, value)
+            is Bundle -> putExtra(it.first, value)
+            is Parcelable -> putExtra(it.first, value)
+            is Array<*> -> when {
+                value.isArrayOf<CharSequence>() -> putExtra(it.first, value)
+                value.isArrayOf<String>() -> putExtra(it.first, value)
+                value.isArrayOf<Parcelable>() -> putExtra(it.first, value)
+                else -> throw IllegalArgumentException("Intent extra ${it.first} has wrong type ${value.javaClass.name}")
+            }
+            is IntArray -> putExtra(it.first, value)
+            is LongArray -> putExtra(it.first, value)
+            is FloatArray -> putExtra(it.first, value)
+            is DoubleArray -> putExtra(it.first, value)
+            is CharArray -> putExtra(it.first, value)
+            is ShortArray -> putExtra(it.first, value)
+            is BooleanArray -> putExtra(it.first, value)
+            else -> throw IllegalArgumentException("Intent extra ${it.first} has wrong type ${value.javaClass.name}")
+        }
+    }
+    this
+}
+
 
 inline fun makeIntent(
-    context: Context,
-    targetClass: Class<*>,
-    params: () -> Array<out Pair<String, Any>>
-): Intent = with(Intent(context, targetClass)) {
+        params: () -> Array<out Pair<String, Any>>
+): Intent = with(Intent()) {
     params().forEach {
         val value = it.second
         // from anko
