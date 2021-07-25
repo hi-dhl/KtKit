@@ -1,7 +1,14 @@
 package com.hi.dhl.ktkit.core
 
+import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.os.Build
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import java.lang.ref.WeakReference
 
 /**
  * <pre>
@@ -37,3 +44,40 @@ inline fun Context.dp2px(value: Int): Int = (density * value).toInt()
 
 // px to dp
 inline fun Context.px2dp(value: Int): Float = value.toFloat() / density
+
+
+/**
+ * 网络检查
+ */
+fun Context.hasNetwork(): Boolean? {
+    var isConnected: Boolean? = false // Initial Value
+    val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+    if (activeNetwork != null && activeNetwork.isConnected)
+        isConnected = true
+    return isConnected
+}
+
+/**
+ * 设置状态栏的颜色
+ *
+ * usage：
+ * setSatatusBarColor(android.R.color.darker_gray)
+ */
+fun Context.setSatatusBarColor(@ColorRes colorResId: Int) {
+
+    if (this is Activity) {
+        setSatatusBarColor(WeakReference<Activity>(this), colorResId)
+    }
+
+}
+
+private fun Context.setSatatusBarColor(context: WeakReference<Activity>, @ColorRes colorResId: Int) {
+    context.get()?.run {
+        if (Build.VERSION.SDK_INT >= 21) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.statusBarColor = resources.getColor(colorResId)
+        }
+    }
+}

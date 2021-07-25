@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
 import com.hi.dhl.demo.ktkit.login.LoginActivity
+import com.hi.dhl.ktkit.core.setSatatusBarColor
 import com.hi.dhl.ktkit.ui.formatPhoneNumber
 import java.util.*
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         initView()
+        setSatatusBarColor(android.R.color.darker_gray)
     }
 
 
