@@ -2,7 +2,6 @@ package com.hi.dhl.demo.ktkit
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.hi.dhl.binding.viewbind
@@ -41,7 +40,6 @@ class ProfileActivity : Activity(), View.OnClickListener {
         }
     }
 
-
     override fun onClick(v: View) {
         with(binding) {
             when (v) {
@@ -53,9 +51,9 @@ class ProfileActivity : Activity(), View.OnClickListener {
 //                    }
 
                     setActivityResult(
-                            Activity.RESULT_OK,
-                            KEY_RESULT to "success",
-                            KEY_USER_NAME to "ByteCode"
+                        Activity.RESULT_OK,
+                        KEY_RESULT to "success",
+                        KEY_USER_NAME to "ByteCode"
                     )
                     finish()
                 }
@@ -97,12 +95,11 @@ class ProfileActivity : Activity(), View.OnClickListener {
 
             context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE) {
                 arrayOf(
-                        KEY_USER_NAME to "ByteCode",
-                        KEY_USER_PASSWORD to "1024",
-                        KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+                    KEY_USER_NAME to "ByteCode",
+                    KEY_USER_PASSWORD to "1024",
+                    KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
                 )
             }
         }
     }
-
 }

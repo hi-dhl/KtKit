@@ -20,15 +20,15 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        with(binding){
+        with(binding) {
             addFragment()
         }
     }
 
     private fun addFragment() {
         supportFragmentManager.beginTransaction()
-                .replace(R.id.loginContainer, LoginFragment.newInstance2())
-                .commit()
+            .replace(R.id.loginContainer, LoginFragment.newInstance2())
+            .commit()
     }
 
     companion object {

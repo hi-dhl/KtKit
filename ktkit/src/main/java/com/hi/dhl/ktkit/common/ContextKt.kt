@@ -45,7 +45,6 @@ inline fun Context.dp2px(value: Int): Int = (density * value).toInt()
 // px to dp
 inline fun Context.px2dp(value: Int): Float = value.toFloat() / density
 
-
 /**
  * 网络检查
  */
@@ -69,7 +68,6 @@ fun Context.setSatatusBarColor(@ColorRes colorResId: Int) {
     if (this is Activity) {
         setSatatusBarColor(WeakReference<Activity>(this), colorResId)
     }
-
 }
 
 private fun Context.setSatatusBarColor(context: WeakReference<Activity>, @ColorRes colorResId: Int) {

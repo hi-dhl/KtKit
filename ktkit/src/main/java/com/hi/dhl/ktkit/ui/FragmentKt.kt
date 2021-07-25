@@ -22,8 +22,8 @@ import androidx.fragment.app.Fragment
  *
  */
 inline fun <reified T : Any> Fragment.intent(
-        key: String,
-        crossinline defaultValue: () -> Unit
+    key: String,
+    crossinline defaultValue: () -> Unit
 ) = lazy(LazyThreadSafetyMode.NONE) {
     val value = arguments?.get(key)
     if (value is T) value else defaultValue()
@@ -37,11 +37,10 @@ inline fun <reified T : Any> Fragment.intent(
  *
  */
 inline fun <reified T : Any> Fragment.intent(
-        key: String
+    key: String
 ) = lazy(LazyThreadSafetyMode.NONE) {
     arguments?.get(key)
 }
-
 
 /**
  *
@@ -57,14 +56,13 @@ inline fun <reified T : Any> Fragment.intent(
  *
  */
 inline fun Fragment.makeBundle(
-        vararg params: Pair<String, Any>
+    vararg params: Pair<String, Any>
 ): Fragment {
     makeBundle {
         params
     }
     return this
 }
-
 
 /**
  *
@@ -83,7 +81,7 @@ inline fun Fragment.makeBundle(
  */
 
 inline fun Fragment.makeBundle(
-        params: () -> Array<out Pair<String, Any>>
+    params: () -> Array<out Pair<String, Any>>
 ): Fragment {
     arguments = with(Bundle()) {
         params().forEach {

@@ -23,8 +23,8 @@ import android.os.Parcelable
  *
  */
 inline fun <reified T : Any> Activity.intent(
-        key: String,
-        crossinline defaultValue: () -> T
+    key: String,
+    crossinline defaultValue: () -> T
 ) = lazy(LazyThreadSafetyMode.NONE) {
     val value = intent?.extras?.get(key)
     if (value is T) value else defaultValue()
@@ -37,7 +37,7 @@ inline fun <reified T : Any> Activity.intent(
  *
  */
 inline fun <reified T : Any> Activity.intent(
-        key: String
+    key: String
 ) = lazy(LazyThreadSafetyMode.NONE) {
     intent?.extras?.get(key)
 }
@@ -99,8 +99,8 @@ inline fun <reified T : Any> Context.startActivity(params: () -> Array<out Pair<
  */
 
 inline fun <reified T : Any> Context.startActivityForResult(
-        requestCode: Int,
-        vararg params: Pair<String, Any>
+    requestCode: Int,
+    vararg params: Pair<String, Any>
 ) {
     if (this is Activity) {
         val intent = makeIntent(this, T::class.java) {
@@ -124,8 +124,8 @@ inline fun <reified T : Any> Context.startActivityForResult(
  *
  */
 inline fun <reified T : Any> Context.startActivityForResult(
-        requestCode: Int,
-        params: () -> Array<out Pair<String, Any>>
+    requestCode: Int,
+    params: () -> Array<out Pair<String, Any>>
 ) {
     if (this is Activity) {
         val intent = makeIntent(this, T::class.java, params)
@@ -145,8 +145,8 @@ inline fun <reified T : Any> Context.startActivityForResult(
  *
  */
 inline fun Context.setActivityResult(
-        resultCode: Int = Activity.RESULT_OK,
-        vararg params: Pair<String, Any>
+    resultCode: Int = Activity.RESULT_OK,
+    vararg params: Pair<String, Any>
 ) {
     if (this is Activity) {
         val intent = makeIntent {
@@ -168,8 +168,8 @@ inline fun Context.setActivityResult(
  *
  */
 inline fun Context.setActivityResult(
-        resultCode: Int = Activity.RESULT_OK,
-        params: () -> Array<out Pair<String, Any>>
+    resultCode: Int = Activity.RESULT_OK,
+    params: () -> Array<out Pair<String, Any>>
 ) {
     if (this is Activity) {
         setResult(resultCode, makeIntent(params))
@@ -178,9 +178,9 @@ inline fun Context.setActivityResult(
 
 // 感谢 Kotlin/anko
 inline fun makeIntent(
-        context: Context,
-        targetClass: Class<*>,
-        params: () -> Array<out Pair<String, Any>>
+    context: Context,
+    targetClass: Class<*>,
+    params: () -> Array<out Pair<String, Any>>
 ): Intent = with(Intent(context, targetClass)) {
     params().forEach {
         makeParams(it)
@@ -188,9 +188,8 @@ inline fun makeIntent(
     this
 }
 
-
 inline fun makeIntent(
-        params: () -> Array<out Pair<String, Any>>
+    params: () -> Array<out Pair<String, Any>>
 ): Intent = with(Intent()) {
     params().forEach {
         makeParams(it)

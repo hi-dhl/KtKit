@@ -26,9 +26,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setSatatusBarColor(android.R.color.darker_gray)
     }
 
-
     private fun initView() {
-        with(binding){
+        with(binding) {
             val phontNumberStr = "044 668 18 00"
             tvFormatPhoneNumber.setText(phontNumberStr.formatPhoneNumber("CH"))
         }
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun getViews() = with(binding) {
         arrayListOf<View>(btnProfile, btnAddFragment)
     }
@@ -53,8 +51,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (requestCode == ProfileActivity.KEY_REQUEST_CODE) {
             val result = data?.getStringExtra(ProfileActivity.KEY_RESULT)
             val userName = data?.getStringExtra(ProfileActivity.KEY_USER_NAME)
-            binding.textActResult.setText("${result} - ${userName}")
+            binding.textActResult.setText("$result - $userName")
         }
     }
-
 }

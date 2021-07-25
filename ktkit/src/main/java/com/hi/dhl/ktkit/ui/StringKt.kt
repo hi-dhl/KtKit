@@ -2,8 +2,6 @@
 
 package com.hi.dhl.ktkit.ui
 
-import android.content.Context
-import android.telephony.PhoneNumberUtils
 import android.util.Patterns
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import kotlin.contracts.ExperimentalContracts

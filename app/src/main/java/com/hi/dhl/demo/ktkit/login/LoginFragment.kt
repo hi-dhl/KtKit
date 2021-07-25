@@ -43,22 +43,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         fun newInstance1(): Fragment {
             return LoginFragment().makeBundle(
-                    ProfileActivity.KEY_USER_NAME to "ByteCode",
-                    ProfileActivity.KEY_USER_PASSWORD to "1024",
-                    ProfileActivity.KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+                ProfileActivity.KEY_USER_NAME to "ByteCode",
+                ProfileActivity.KEY_USER_PASSWORD to "1024",
+                ProfileActivity.KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
             )
         }
 
         fun newInstance2(): Fragment {
             return LoginFragment().makeBundle {
                 arrayOf(
-                        KEY_USER_NAME to "ByteCode",
-                        KEY_USER_PASSWORD to "1024",
-                        KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+                    KEY_USER_NAME to "ByteCode",
+                    KEY_USER_PASSWORD to "1024",
+                    KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
                 )
             }
         }
     }
-
-
 }
