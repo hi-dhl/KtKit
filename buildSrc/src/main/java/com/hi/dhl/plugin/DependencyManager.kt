@@ -58,6 +58,7 @@ object AndroidX {
 
 object Android {
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val libphonenumber = "com.googlecode.libphonenumber:libphonenumber:7.2.2"
 }
 
 object Hilt {

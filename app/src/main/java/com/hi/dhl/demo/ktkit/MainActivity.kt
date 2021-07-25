@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
 import com.hi.dhl.demo.ktkit.login.LoginActivity
+import com.hi.dhl.ktkit.ui.formatPhoneNumber
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -18,8 +20,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         getViews().forEach {
             it.setOnClickListener(this)
         }
+
+        initView()
     }
 
+
+    private fun initView() {
+        with(binding){
+            val phontNumberStr = "044 668 18 00"
+            tvFormatPhoneNumber.setText(phontNumberStr.formatPhoneNumber("CH"))
+        }
+    }
 
     override fun onClick(v: View) {
         with(binding) {

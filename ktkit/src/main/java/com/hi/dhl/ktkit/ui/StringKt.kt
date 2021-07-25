@@ -2,7 +2,10 @@
 
 package com.hi.dhl.ktkit.ui
 
+import android.content.Context
+import android.telephony.PhoneNumberUtils
 import android.util.Patterns
+import com.google.i18n.phonenumbers.PhoneNumberUtil
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
@@ -25,6 +28,21 @@ inline fun String?.isNotNullOrEmpty(): Boolean {
 
 inline fun String.isValidPhone(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.PHONE.matcher(this).matches()
+}
+
+/**
+ * format Phone number
+ *
+ *  usage：
+ *  val phontNumberStr = "044 668 18 00"
+ *  phontNumberStr.formatPhoneNumber("CH")
+ */
+fun String.formatPhoneNumber(region: String): String? {
+    val phoneNumberUtil = PhoneNumberUtil.getInstance()
+    val number = phoneNumberUtil.parse(this, region)
+    if (!phoneNumberUtil.isValidNumber(number))
+        return null
+    return phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
 }
 
 inline fun String.isValidEmail(): Boolean {

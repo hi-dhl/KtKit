@@ -45,10 +45,9 @@ dependencies {
     implementation AndroidX.coreKtx
     implementation AndroidX.appcompat
     implementation Android.material
-    implementation AndroidX.constraintlayout
+    implementation Android.libphonenumber
     implementation Fragment.runtime
     implementation Fragment.runtimeKtx
-
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore
