@@ -28,9 +28,6 @@ KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系
 // Project 级别的 `build.gradle`
 allprojects {
     repositories {
-        // aliyun center 包含 mavenCentral 和  jcenter
-        maven { url "https://maven.aliyun.com/repository/public" }
-        // maven
         mavenCentral()
     }
 }
