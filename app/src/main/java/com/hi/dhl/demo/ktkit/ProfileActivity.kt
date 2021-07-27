@@ -3,11 +3,13 @@ package com.hi.dhl.demo.ktkit
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityProfileBinding
 import com.hi.dhl.demo.ktkit.model.PeopleModel
 import com.hi.dhl.ktkit.ui.intent
+import com.hi.dhl.ktkit.ui.isNotNullOrEmpty
 import com.hi.dhl.ktkit.ui.setActivityResult
 import com.hi.dhl.ktkit.ui.startActivityForResult
 
@@ -31,7 +33,10 @@ class ProfileActivity : Activity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         with(binding) {
-            val content = "userNnam = $userName   " + "userPassword = $userPassword + people = $peopleModel"
+            if(userName.isNotNullOrEmpty()){
+                Log.i(TAG,"userName = ${userName}")
+            }
+            val content = "userNnam = $userName userPassword = $userPassword   people = $peopleModel"
             textResult.setText(content)
         }
 
@@ -66,6 +71,7 @@ class ProfileActivity : Activity(), View.OnClickListener {
     }
 
     companion object {
+        const val TAG = "ProfileActivity"
         const val KEY_USER_NAME = "userName"
         const val KEY_USER_PASSWORD = "userPassWord"
         const val KEY_PEOPLE_PARCELIZE = "peopleParcelize"

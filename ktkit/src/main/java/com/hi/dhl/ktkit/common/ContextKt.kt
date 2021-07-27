@@ -8,6 +8,7 @@ import android.os.Build
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import java.lang.ref.WeakReference
 
 /**
@@ -19,12 +20,20 @@ import java.lang.ref.WeakReference
  */
 
 // toast
-fun Context.showShotToast(message: String) {
+fun Context.showShortToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.showShortToast(@StringRes stringResId: Int) {
+    Toast.makeText(this, getString(stringResId), Toast.LENGTH_SHORT).show()
 }
 
 fun Context.showLongToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
+
+fun Context.showLongToast(@StringRes stringResId: Int) {
+    Toast.makeText(this, getString(stringResId), Toast.LENGTH_LONG).show()
 }
 
 // 屏幕宽度(px)

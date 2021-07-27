@@ -43,14 +43,18 @@ android {
 }
 
 dependencies {
-
+    def remote = false
     implementation Kt.kotlinStdlib
     implementation AndroidX.coreKtx
     implementation AndroidX.appcompat
     implementation Android.material
     implementation AndroidX.constraintlayout
     implementation Depend.binding
-    implementation project(":ktkit")
+    if (remote) {
+        implementation Depend.ktkit
+    } else {
+        implementation project(":ktkit")
+    }
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore

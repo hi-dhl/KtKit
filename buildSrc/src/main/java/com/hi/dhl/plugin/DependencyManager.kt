@@ -38,6 +38,7 @@ object Versions {
     const val appStartup = "1.0.0"
     const val material = "1.3.0"
     const val binding = "1.1.3"
+    const val ktkit = "1.0.0-SNAPSHOT"
 }
 
 object AndroidX {
@@ -126,5 +127,6 @@ object Depend {
     const val jDatabinding = "com.hi-dhl:jdatabinding:${Versions.jDatabinding}"
     const val progressview = "com.hi-dhl:progressview:${Versions.progressview}"
     const val binding = "com.hi-dhl:binding:${Versions.binding}"
+    const val ktkit = "com.hi-dhl:ktkit:${Versions.ktkit}"
 }
 

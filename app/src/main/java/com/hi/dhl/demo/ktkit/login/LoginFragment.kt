@@ -31,7 +31,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            val content = "userNnam = $userName   " + "userPassword = $userPassword + people = $peopleModel"
+            val content = "userNnam = $userName userPassword = $userPassword   people = $peopleModel"
             textResult.setText(content)
         }
     }
