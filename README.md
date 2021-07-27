@@ -38,7 +38,7 @@ dependencies {
 }
 ```
 
-**快照版本: 此版本包含最新的 API**
+**快照版本: 此版本包含最新的 API，版本号点击 [snapshots](https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit/) 前往查看**
 
 ```
 // Project 级别的 `build.gradle`
@@ -49,7 +49,7 @@ repositories {
 
 // 模块级 `build.gradle`
 dependencies {
-    
+    implementation "com.hi-dhl:ktkit:1.0.0-SNAPSHOT"
 }
 ```
 
@@ -114,14 +114,24 @@ context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE) {
             KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
     )
 }
+```
 
-// 回传参数
+**回传参数**
+
+```
+// 方式一
+setActivityResult(Activity.RESULT_OK) {
+   arrayOf(
+            KEY_RESULT to "success"
+    )
+}
+                    
+// 方式二
 setActivityResult(
         Activity.RESULT_OK,
         KEY_RESULT to "success",
         KEY_USER_NAME to "ByteCode"
 )
-finish()
 ```
 
 **Fragment 跳转 及 传递参数**
