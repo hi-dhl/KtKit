@@ -1,4 +1,6 @@
 @file:OptIn(ExperimentalContracts::class)
+@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+
 
 package com.hi.dhl.ktkit.ui
 
@@ -16,6 +18,7 @@ import kotlin.contracts.contract
  */
 
 @SinceKotlin("1.3")
+@kotlin.internal.InlineOnly
 inline fun String?.isNotNullOrEmpty(): Boolean {
     contract {
         returns(true) implies (this@isNotNullOrEmpty != null)
@@ -24,6 +27,7 @@ inline fun String?.isNotNullOrEmpty(): Boolean {
     return this != null && !this.trim().equals("null", true) && this.trim().isNotEmpty()
 }
 
+@kotlin.internal.InlineOnly
 inline fun String.isValidPhone(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.PHONE.matcher(this).matches()
 }
@@ -35,7 +39,8 @@ inline fun String.isValidPhone(): Boolean {
  *  val phontNumberStr = "044 668 18 00"
  *  phontNumberStr.formatPhoneNumber("CH")
  */
-fun String.formatPhoneNumber(region: String): String? {
+@kotlin.internal.InlineOnly
+inline fun String.formatPhoneNumber(region: String): String? {
     val phoneNumberUtil = PhoneNumberUtil.getInstance()
     val number = phoneNumberUtil.parse(this, region)
     if (!phoneNumberUtil.isValidNumber(number))
@@ -43,14 +48,17 @@ fun String.formatPhoneNumber(region: String): String? {
     return phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
 }
 
+@kotlin.internal.InlineOnly
 inline fun String.isValidEmail(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
 
+@kotlin.internal.InlineOnly
 inline fun String.isIPAddress(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.IP_ADDRESS.matcher(this).matches()
 }
 
+@kotlin.internal.InlineOnly
 inline fun String.isDomainName(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.DOMAIN_NAME.matcher(this).matches()
 }

@@ -1,3 +1,5 @@
+@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+
 package com.hi.dhl.ktkit.ui
 
 import android.app.Activity
@@ -144,6 +146,7 @@ inline fun <reified T : Any> Context.startActivityForResult(
  *      )
  *
  */
+@kotlin.internal.InlineOnly
 inline fun Context.setActivityResult(
     resultCode: Int = Activity.RESULT_OK,
     vararg params: Pair<String, Any>

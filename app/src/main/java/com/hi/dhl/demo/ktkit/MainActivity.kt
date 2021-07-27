@@ -9,6 +9,7 @@ import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
 import com.hi.dhl.demo.ktkit.login.LoginActivity
 import com.hi.dhl.ktkit.core.*
 import com.hi.dhl.ktkit.ui.formatPhoneNumber
+import com.hi.dhl.ktkit.ui.showActionSnackBar
 import com.hi.dhl.ktkit.ui.showShortSnackbar
 import java.util.*
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             val screen = "width = ${screenWidth} height = ${screenHeight} density = ${density} dp2px = ${dp2px(10)} px2dp = ${px2dp(10)}"
             tvScreen.setText(screen)
-            tvScreen.append("hasNetwork = ${hasNetwork()}")
+//            tvScreen.append("hasNetwork = ${hasNetwork()}")
 
         }
     }
@@ -52,13 +53,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 }
                 btnSnackBar -> {
-                    btnToast.showShortSnackbar("公众号：ByteCode")
+//                    btnToast.showShortSnackbar("公众号：ByteCode")
 //                    btnToast.showShortSnackbar(R.string.app_name)
 //                    btnToast.showLongSnackbar("hi 我是 dhl")
 //                    btnToast.showLongSnackbar(R.string.app_name)
-//                    btnToast.showActionSnackBar("公众号：ByteCode","login"){
-//                        showLongToast("hi 我是 dhl")
-//                    }
+                    btnToast.showActionSnackBar("公众号：ByteCode","click me"){
+                        showLongToast("hi 我是 dhl")
+                    }
                 }
             }
         }

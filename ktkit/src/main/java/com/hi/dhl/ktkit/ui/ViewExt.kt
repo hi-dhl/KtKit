@@ -1,3 +1,5 @@
+@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+
 package com.hi.dhl.ktkit.ui
 
 import android.view.View
@@ -12,35 +14,43 @@ import com.google.android.material.snackbar.Snackbar
  * </pre>
  */
 
-fun View.visible() = View.VISIBLE
+@kotlin.internal.InlineOnly
+inline fun View.visible() = View.VISIBLE
 
-fun View.gone() = View.GONE
+@kotlin.internal.InlineOnly
+inline fun View.gone() = View.GONE
 
-fun View.invisible() = View.INVISIBLE
+@kotlin.internal.InlineOnly
+inline fun View.invisible() = View.INVISIBLE
 
-fun View.showShortSnackbar(message: String) {
+@kotlin.internal.InlineOnly
+inline fun View.showShortSnackbar(message: String) {
     Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
 
-fun View.showShortSnackbar(@StringRes stringResId: Int) {
+@kotlin.internal.InlineOnly
+inline fun View.showShortSnackbar(@StringRes stringResId: Int) {
     Snackbar.make(this, stringResId, Snackbar.LENGTH_SHORT).show()
 }
 
-fun View.showLongSnackbar(message: String) {
+@kotlin.internal.InlineOnly
+inline fun View.showLongSnackbar(message: String) {
     Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
 }
 
-fun View.showLongSnackbar(@StringRes stringResId: Int) {
+@kotlin.internal.InlineOnly
+inline fun View.showLongSnackbar(@StringRes stringResId: Int) {
     Snackbar.make(this, stringResId, Snackbar.LENGTH_LONG).show()
 }
 
-fun View.showActionSnackBar(
+@kotlin.internal.InlineOnly
+inline fun View.showActionSnackBar(
     message: String,
-    actionlable: String,
-    block: () -> Unit
+    actionName: String,
+    noinline block: () -> Unit
 ) {
     Snackbar.make(this, message, Snackbar.LENGTH_LONG)
-        .setAction(actionlable) {
+        .setAction(actionName) {
             block()
-        }
+        }.show()
 }

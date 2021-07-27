@@ -1,3 +1,5 @@
+@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+
 package com.hi.dhl.ktkit.core
 
 import android.app.Activity
@@ -20,19 +22,23 @@ import java.lang.ref.WeakReference
  */
 
 // toast
-fun Context.showShortToast(message: String) {
+@kotlin.internal.InlineOnly
+inline fun Context.showShortToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun Context.showShortToast(@StringRes stringResId: Int) {
+@kotlin.internal.InlineOnly
+inline fun Context.showShortToast(@StringRes stringResId: Int) {
     Toast.makeText(this, getString(stringResId), Toast.LENGTH_SHORT).show()
 }
 
-fun Context.showLongToast(message: String) {
+@kotlin.internal.InlineOnly
+inline fun Context.showLongToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
-fun Context.showLongToast(@StringRes stringResId: Int) {
+@kotlin.internal.InlineOnly
+inline fun Context.showLongToast(@StringRes stringResId: Int) {
     Toast.makeText(this, getString(stringResId), Toast.LENGTH_LONG).show()
 }
 
@@ -49,15 +55,18 @@ inline val Context.density: Float
     get() = resources.displayMetrics.density
 
 // dp to px
+@kotlin.internal.InlineOnly
 inline fun Context.dp2px(value: Int): Int = (density * value).toInt()
 
 // px to dp
+@kotlin.internal.InlineOnly
 inline fun Context.px2dp(value: Int): Float = value.toFloat() / density
 
 /**
  * 网络检查
  */
-fun Context.hasNetwork(): Boolean? {
+@kotlin.internal.InlineOnly
+inline fun Context.hasNetwork(): Boolean? {
     var isConnected: Boolean? = false // Initial Value
     val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo

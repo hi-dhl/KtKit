@@ -1,3 +1,4 @@
+@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
 package com.hi.dhl.ktkit.ui
 
 import android.os.Bundle
@@ -55,6 +56,7 @@ inline fun <reified T : Any> Fragment.intent(
  *  }
  *
  */
+@kotlin.internal.InlineOnly
 inline fun Fragment.makeBundle(
     vararg params: Pair<String, Any>
 ): Fragment {
