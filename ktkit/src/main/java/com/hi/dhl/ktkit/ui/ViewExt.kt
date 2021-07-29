@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalContracts::class, ExperimentalCoroutinesApi::class, FlowPreview::class)
 @file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
 
 package com.hi.dhl.ktkit.ui
@@ -5,6 +6,9 @@ package com.hi.dhl.ktkit.ui
 import android.view.View
 import androidx.annotation.StringRes
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlin.contracts.ExperimentalContracts
 
 /**
  * <pre>
@@ -43,6 +47,15 @@ inline fun View.showLongSnackbar(@StringRes stringResId: Int) {
     Snackbar.make(this, stringResId, Snackbar.LENGTH_LONG).show()
 }
 
+/**
+ * Example：
+ *
+ * ```
+ * btn.showActionSnackBar("公众号：ByteCode", "click me") {
+ *      showLongToast("hi 我是 dhl")
+ * }
+ * ```
+ */
 @kotlin.internal.InlineOnly
 inline fun View.showActionSnackBar(
     message: String,

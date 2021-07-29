@@ -3,6 +3,7 @@ import com.hi.dhl.plugin.AndroidX
 import com.hi.dhl.plugin.Depend
 import com.hi.dhl.plugin.Fragment
 import com.hi.dhl.plugin.Kt
+import com.hi.dhl.plugin.Lifecycle
 
 plugins {
     id 'com.android.library'
@@ -49,6 +50,10 @@ dependencies {
     implementation Android.libphonenumber
     implementation Fragment.runtime
     implementation Fragment.runtimeKtx
+    implementation Kt.coroutinesCore
+    implementation Kt.coroutinesAndroid
+    implementation Lifecycle.runtimeKtx
+    implementation Lifecycle.commonJava8
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore

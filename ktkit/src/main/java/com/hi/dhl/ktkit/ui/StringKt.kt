@@ -1,7 +1,6 @@
 @file:OptIn(ExperimentalContracts::class)
 @file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
 
-
 package com.hi.dhl.ktkit.ui
 
 import android.util.Patterns
@@ -35,9 +34,12 @@ inline fun String.isValidPhone(): Boolean {
 /**
  * format Phone number
  *
- *  usage：
- *  val phontNumberStr = "044 668 18 00"
- *  phontNumberStr.formatPhoneNumber("CH")
+ * Example:
+ *
+ * ```
+ * val phontNumberStr = "044 668 18 00"
+ * phontNumberStr.formatPhoneNumber("CH")
+ * ```
  */
 @kotlin.internal.InlineOnly
 inline fun String.formatPhoneNumber(region: String): String? {

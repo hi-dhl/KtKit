@@ -4,16 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
 import com.hi.dhl.demo.ktkit.login.LoginActivity
 import com.hi.dhl.ktkit.core.*
-import com.hi.dhl.ktkit.ui.formatPhoneNumber
-import com.hi.dhl.ktkit.ui.showActionSnackBar
-import com.hi.dhl.ktkit.ui.showShortSnackbar
+import com.hi.dhl.ktkit.ui.*
 import java.util.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by viewbind()
 
@@ -21,11 +20,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         getViews().forEach {
-            it.setOnClickListener(this)
+            it.click(lifecycleScope) {
+                onClick(it)
+            }
+        }
+
+        binding.btnDebounce.clickDelayed(lifecycleScope){
+
+        }
+        binding.btnDebounce.clickTrigger(lifecycleScope, 1000) {
+            onClick(it)
         }
 
         initView()
-
     }
 
     private fun initView() {
@@ -33,14 +40,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val phontNumberStr = "044 668 18 00"
             tvFormatPhoneNumber.setText(phontNumberStr.formatPhoneNumber("CH"))
 
-            val screen = "width = ${screenWidth} height = ${screenHeight} density = ${density} dp2px = ${dp2px(10)} px2dp = ${px2dp(10)}"
+            val screen = "width = $screenWidth height = $screenHeight density = $density dp2px = ${dp2px(10)} px2dp = ${px2dp(10)}"
             tvScreen.setText(screen)
 //            tvScreen.append("hasNetwork = ${hasNetwork()}")
-
         }
     }
 
-    override fun onClick(v: View) {
+    fun onClick(v: View) {
         with(binding) {
             when (v) {
                 btnProfile -> ProfileActivity.startActivity(this@MainActivity)
@@ -50,17 +56,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //                    showShortToast(R.string.app_name)
 //                    showLongToast("hi 我是 dhl")
 //                    showLongToast(R.string.app_name)
-
                 }
                 btnSnackBar -> {
 //                    btnToast.showShortSnackbar("公众号：ByteCode")
 //                    btnToast.showShortSnackbar(R.string.app_name)
 //                    btnToast.showLongSnackbar("hi 我是 dhl")
 //                    btnToast.showLongSnackbar(R.string.app_name)
-                    btnToast.showActionSnackBar("公众号：ByteCode","click me"){
+                    btnToast.showActionSnackBar("公众号：ByteCode", "click me") {
                         showLongToast("hi 我是 dhl")
                     }
                 }
+                btnDebounce -> showShortToast("公众号：ByteCode")
             }
         }
     }

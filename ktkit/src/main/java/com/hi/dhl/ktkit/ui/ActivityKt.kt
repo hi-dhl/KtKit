@@ -17,12 +17,13 @@ import android.os.Parcelable
  */
 
 /**
- *  usage：
+ * Example:
  *
- *   private val userName by intent<String>(KEY_USER_NAME) {
- *        "default"
- *  }
- *
+ * ```
+ * private val userName by intent<String>(KEY_USER_NAME) {
+ *      "default"
+ * }
+ * ```
  */
 inline fun <reified T : Any> Activity.intent(
     key: String,
@@ -33,10 +34,12 @@ inline fun <reified T : Any> Activity.intent(
 }
 
 /**
- *  usage：
  *
- *  private val userName by intent<String>(KEY_USER_NAME)
+ * Example:
  *
+ * ```
+ * private val userName by intent<String>(KEY_USER_NAME)
+ * ```
  */
 inline fun <reified T : Any> Activity.intent(
     key: String
@@ -45,10 +48,11 @@ inline fun <reified T : Any> Activity.intent(
 }
 
 /**
- *  usage：
+ * Example:
  *
- *  context.startActivity<ProfileActivity>
- *
+ * ```
+ * context.startActivity<ProfileActivity>
+ * ```
  */
 inline fun <reified T : Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
@@ -56,14 +60,14 @@ inline fun <reified T : Activity> Context.startActivity() {
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  context.startActivity<ProfileActivity>(
- *      KEY_USER_NAME to "ByteCode",
- *      KEY_USER_PASSWORD to "1024"
- *  )
- *
+ * ```
+ * context.startActivity<ProfileActivity>(
+ *     KEY_USER_NAME to "ByteCode",
+ *     KEY_USER_PASSWORD to "1024"
+ * )
+ * ```
  */
 inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<String, Any>) {
     startActivity<T> {
@@ -72,34 +76,33 @@ inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<Stri
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  context.startActivity<ProfileActivity> {
- *      arrayOf(
- *          KEY_USER_NAME to "ByteCode",
- *          KEY_USER_PASSWORD to "1024",
- *          KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
- *      )
- *  }
- *
+ * ```
+ * context.startActivity<ProfileActivity> {
+ *     arrayOf(
+ *         KEY_USER_NAME to "ByteCode",
+ *         KEY_USER_PASSWORD to "1024",
+ *         KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *     )
+ * }
+ * ```
  */
 inline fun <reified T : Any> Context.startActivity(params: () -> Array<out Pair<String, Any>>) {
     startActivity(makeIntent(this, T::class.java, params))
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE,
- *      KEY_USER_NAME to "ByteCode",
- *      KEY_USER_PASSWORD to "1024",
- *      KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
- *  )
- *
+ * ```
+ * context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE,
+ *     KEY_USER_NAME to "ByteCode",
+ *     KEY_USER_PASSWORD to "1024",
+ *     KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ * )
+ * ```
  */
-
 inline fun <reified T : Any> Context.startActivityForResult(
     requestCode: Int,
     vararg params: Pair<String, Any>
@@ -113,17 +116,17 @@ inline fun <reified T : Any> Context.startActivityForResult(
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE) {
- *      arrayOf(
- *          KEY_USER_NAME to "ByteCode",
- *          KEY_USER_PASSWORD to "1024",
- *          KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
- *      )
- *  }
- *
+ * ```
+ * context.startActivityForResult<ProfileActivity>(KEY_REQUEST_CODE) {
+ *     arrayOf(
+ *         KEY_USER_NAME to "ByteCode",
+ *         KEY_USER_PASSWORD to "1024",
+ *         KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *     )
+ * }
+ * ```
  */
 inline fun <reified T : Any> Context.startActivityForResult(
     requestCode: Int,
@@ -136,15 +139,15 @@ inline fun <reified T : Any> Context.startActivityForResult(
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  setActivityResult(
- *      Activity.RESULT_OK,
- *          KEY_RESULT to "success",
- *          KEY_USER_NAME to "ByteCode"
- *      )
- *
+ * ```
+ * setActivityResult(
+ *     Activity.RESULT_OK,
+ *     KEY_RESULT to "success",
+ *     KEY_USER_NAME to "ByteCode"
+ * )
+ * ```
  */
 @kotlin.internal.InlineOnly
 inline fun Context.setActivityResult(
@@ -160,15 +163,15 @@ inline fun Context.setActivityResult(
 }
 
 /**
+ * Example：
  *
- *  usage：
- *
- *  setActivityResult(Activity.RESULT_OK) {
- *      arrayOf(
- *          KEY_RESULT to "success"
- *      )
- *  }
- *
+ * ```
+ * setActivityResult(Activity.RESULT_OK) {
+ *     arrayOf(
+ *         KEY_RESULT to "success"
+ *     )
+ * }
+ * ```
  */
 inline fun Context.setActivityResult(
     resultCode: Int = Activity.RESULT_OK,
@@ -179,7 +182,6 @@ inline fun Context.setActivityResult(
     }
 }
 
-// 感谢 Kotlin/anko
 inline fun makeIntent(
     context: Context,
     targetClass: Class<*>,
@@ -200,7 +202,9 @@ inline fun makeIntent(
     this
 }
 
-fun Intent.makeParams(it: Pair<String, Any>) {
+// 感谢 Kotlin/anko
+@kotlin.internal.InlineOnly
+inline fun Intent.makeParams(it: Pair<String, Any>) {
     val value = it.second
     // from anko
     when (value) {

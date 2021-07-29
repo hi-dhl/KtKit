@@ -14,13 +14,13 @@ import androidx.fragment.app.Fragment
  */
 
 /**
+ * Example:
  *
- *  usage：
- *
- *  private val userName by intent<String>(KEY_USER_NAME) {
- *      "default"
- *  }
- *
+ * ```
+ * private val userName by intent<String>(KEY_USER_NAME) {
+ *     "default"
+ * }
+ * ```
  */
 inline fun <reified T : Any> Fragment.intent(
     key: String,
@@ -31,11 +31,11 @@ inline fun <reified T : Any> Fragment.intent(
 }
 
 /**
+ * Example:
  *
- *  usage：
- *
- *  private val userPassword by intent<String>(KEY_USER_PASSWORD)
- *
+ * ```
+ * private val userPassword by intent<String>(KEY_USER_PASSWORD)
+ * ```
  */
 inline fun <reified T : Any> Fragment.intent(
     key: String
@@ -44,17 +44,17 @@ inline fun <reified T : Any> Fragment.intent(
 }
 
 /**
+ * Example:
  *
- *  usage：
- *
- *  fun newInstance(): Fragment {
- *      return LoginFragment().makeBundle(
- *          ProfileActivity.KEY_USER_NAME to "ByteCode",
- *          ProfileActivity.KEY_USER_PASSWORD to "1024",
- *          ProfileActivity.KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
- *      )
- *  }
- *
+ * ```
+ * fun newInstance(): Fragment {
+ *     return LoginFragment().makeBundle(
+ *         ProfileActivity.KEY_USER_NAME to "ByteCode",
+ *         ProfileActivity.KEY_USER_PASSWORD to "1024",
+ *         ProfileActivity.KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *     )
+ * }
+ * ```
  */
 @kotlin.internal.InlineOnly
 inline fun Fragment.makeBundle(
@@ -67,21 +67,20 @@ inline fun Fragment.makeBundle(
 }
 
 /**
+ * Example:
  *
- *  usage：
- *
- *  fun newInstance(): Fragment {
- *      return LoginFragment().makeBundle {
- *          arrayOf(
- *              KEY_USER_NAME to "ByteCode",
- *              KEY_USER_PASSWORD to "1024",
- *              KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
- *          )
- *      }
- *  }
- *
+ * ```
+ * fun newInstance(): Fragment {
+ *     return LoginFragment().makeBundle {
+ *         arrayOf(
+ *             KEY_USER_NAME to "ByteCode",
+ *             KEY_USER_PASSWORD to "1024",
+ *             KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+ *         )
+ *     }
+ * }
+ * ```
  */
-
 inline fun Fragment.makeBundle(
     params: () -> Array<out Pair<String, Any>>
 ): Fragment {
@@ -94,8 +93,9 @@ inline fun Fragment.makeBundle(
     return this
 }
 
-// from anko
-fun Bundle.makeParams(it: Pair<String, Any>) {
+// 感谢 Kotlin/anko
+@kotlin.internal.InlineOnly
+inline fun Bundle.makeParams(it: Pair<String, Any>) {
     val value = it.second
     when (value) {
         is Int -> putInt(it.first, value)

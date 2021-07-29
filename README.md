@@ -18,6 +18,7 @@ KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系
 
 * Kotlin 官方 API
 * [anko](https://github.com/Kotlin/anko)
+* [FlowBinding](https://github.com/ReactiveCircus/FlowBinding)
 * Google Jetpack ktx
 
 ## Download

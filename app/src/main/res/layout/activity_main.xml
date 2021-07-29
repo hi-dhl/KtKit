@@ -69,4 +69,12 @@
         app:layout_constraintTop_toBottomOf="@+id/btnToast" />
 
 
+    <Button
+        android:id="@+id/btnDebounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="防止重复点击(默认500毫秒)"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSnackBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

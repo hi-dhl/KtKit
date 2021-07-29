@@ -2,6 +2,7 @@ import com.hi.dhl.plugin.Android
 import com.hi.dhl.plugin.AndroidX
 import com.hi.dhl.plugin.Depend
 import com.hi.dhl.plugin.Kt
+import com.hi.dhl.plugin.Lifecycle
 
 plugins {
     id 'com.android.application'
@@ -55,6 +56,9 @@ dependencies {
     } else {
         implementation project(":ktkit")
     }
+
+    implementation Lifecycle.runtimeKtx
+    implementation Lifecycle.commonJava8
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore

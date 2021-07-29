@@ -33,8 +33,8 @@ class ProfileActivity : Activity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         with(binding) {
-            if(userName.isNotNullOrEmpty()){
-                Log.i(TAG,"userName = ${userName}")
+            if (userName.isNotNullOrEmpty()) {
+                Log.i(TAG, "userName = $userName")
             }
             val content = "userNnam = $userName userPassword = $userPassword   people = $peopleModel"
             textResult.setText(content)

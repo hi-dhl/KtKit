@@ -17,8 +17,8 @@ object Versions {
     const val paging = "3.0.0-alpha02"
     const val timber = "4.7.1"
     const val kotlin = "1.4.31"
-    const val kotlinCoroutinesCore = "1.3.7"
-    const val kotlinCoroutinesAndrid = "1.3.6"
+    const val kotlinCoroutinesCore = "1.4.0"
+    const val kotlinCoroutinesAndrid = "1.4.0"
     const val koin = "2.1.5"
     const val work = "2.2.0"
     const val room = "2.3.0-alpha01"
@@ -39,6 +39,7 @@ object Versions {
     const val material = "1.3.0"
     const val binding = "1.1.3"
     const val ktkit = "1.0.0-SNAPSHOT"
+    const val lifecycleVersion = "2.3.0-beta01"
 }
 
 object AndroidX {
@@ -130,3 +131,9 @@ object Depend {
     const val ktkit = "com.hi-dhl:ktkit:${Versions.ktkit}"
 }
 
+
+object Lifecycle {
+    const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}" // viewModelScope
+    const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}" // lifecycleScope
+    const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycleVersion}"
+}
