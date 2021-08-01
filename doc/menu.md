@@ -1,6 +1,10 @@
 [filename](common/index_header.md ':include')
 
-### <a href="#/menu?id=目录">开始阅读</a></p></div><div class="mask"></div></section>
+### Download
+
+[filename](help/00-use.md ':include')
+
+[filename](common/index_contact.md ':include')
 
 [filename](common/index_footer.md ':include')
 

@@ -21,6 +21,8 @@ KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系
 * [FlowBinding](https://github.com/ReactiveCircus/FlowBinding)
 * Google Jetpack ktx
 
+但是目前还不是很完善，正在陆续将一些常用的功能，结合着 Kotlin 的高级函数的特性，不仅让代码可读性更强，使用更加简单，而且还可以帮助我们解决项目中常见的问题。
+
 ## Download
 
 **正式版本: 此版本包含稳定版本的 API** 
@@ -62,8 +64,7 @@ dependencies {
 
 **如果这个仓库对你有帮助，请在仓库右上角帮我 star 一下，非常感谢你的支持，同时也欢迎你提交 PR**  ❤️❤️❤️
 
-
-**执行 commit 或者 push 之前请先执行 `./gradlew spotlessApply`  会按照官方标准去格式化**
+项目中引用了 spotless 插件，执行 `./gradlew spotlessApply`  会将 Java 、Kotlin 、xml 、gradle 、md 、gitignore 等等文件按照官方标准去格式化。这也是 Google 提交代码的时候，推荐的方式。
 
 ## 如何使用
 
@@ -72,10 +73,10 @@ dependencies {
 以下两种方式根据实际情况使用即可
 
 ```
-// 方式一： 根据 key 获取参数
+// 方式一： 不带默认值
 private val userPassword by intent<String>(KEY_USER_PASSWORD)
 
-// 方式二：如果获取失败，返回一个默认值
+// 方式二：带默认值：如果获取失败，返回一个默认值
 private val userName by intent<String>(KEY_USER_NAME) {
     "公众号：ByteCode"
 }

@@ -5,51 +5,9 @@ KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系
 * Google Jetpack ktx
 * ......
 
-## Download
+但是目前还不是很完善，正在陆续将一些常用的功能，结合着 Kotlin 的高级函数的特性，不仅让代码可读性更强，使用更加简单，而且还可以帮助我们解决项目中常见的问题。
 
-**正式版本: 此版本包含稳定版本的 API**
-
-```
-// Project 级别的 `build.gradle`
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-
-// 模块级 `build.gradle`
-dependencies {
-    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
-}
-```
-
-**快照版本: 此版本包含最新的 API，版本号点击 [snapshots](https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit/) 前往查看**
-
-```
-// Project 级别的 `build.gradle`
-allprojects {
-    repositories {
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-    }
-}
-
-// 模块级 `build.gradle`
-dependencies {
-    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
-}
-```
-
-**如果这个仓库对你有帮助，请在仓库右上角帮我 star 一下，非常感谢你的支持，同时也欢迎你提交 PR**  ❤️❤️❤️
-
-
-**执行 commit 或者 push 之前请先执行 `./gradlew spotlessApply`  会按照官方标准去格式化**
-
-### 联系我
-
-* 个人微信：hi-dhl
-* 公众号：ByteCode，包含 Jetpack ，Kotlin ，Android 10 系列源码，译文，LeetCode / 剑指 Offer / 多线程 / 国内外大厂算法题 等等一系列文章
-
-<img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 350px/>
-
-
+<p align="center"> 如果图片无法查看，请点击这里查看 <a href="http://img.hi-dhl.com/intent-act.png"> 图例</a>
+<image src="http://img.hi-dhl.com/intent-act.png" width = 700px/>
+</p>
 
