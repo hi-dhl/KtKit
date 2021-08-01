@@ -1,8 +1,9 @@
-KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系列工具，是 Jetpack ktx 系列的补充，同时也是 [anko](https://github.com/Kotlin/anko) 的延续，再次感谢以下项目提供的思路。
+KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系列工具，是 Jetpack ktx 系列的补充，涉及到了很多从 Kotlin 源码、Jetpack ktx、anko 等等知名的开源项目中学习的技巧，包含了 Kotlin 委托属性、高阶函数、扩展函数、内联、注解的使用等等，再次感谢以下项目提供的思路。
 
 * Kotlin 官方 API
 * [anko](https://github.com/Kotlin/anko)
 * Google Jetpack ktx
+* ......
 
 ## Download
 
@@ -18,7 +19,7 @@ allprojects {
 
 // 模块级 `build.gradle`
 dependencies {
-    
+    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
 }
 ```
 
@@ -33,14 +34,14 @@ repositories {
 
 // 模块级 `build.gradle`
 dependencies {
-    implementation "com.hi-dhl:ktkit:1.0.0-SNAPSHOT"
+    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
 }
 ```
 
 **如果这个仓库对你有帮助，请在仓库右上角帮我 star 一下，非常感谢你的支持，同时也欢迎你提交 PR**  ❤️❤️❤️
 
 
-**执行 commit 或者 push 之前请先执行 `./gradlew spotlessApply`  会按照定义好的规则去格式化代码**
+**执行 commit 或者 push 之前请先执行 `./gradlew spotlessApply`  会按照官方标准去格式化**
 
 ### 联系我
 

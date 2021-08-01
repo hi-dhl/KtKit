@@ -1,4 +1,5 @@
-事件通过 lifecycleScope 与 Activity/Fragment 的 Lifecycle 绑定在一起，有效避免内存泄漏，所要使用 lifecycleScope 需要添加一下引用。
+
+将 Flow 通过 lifecycleScope 与 Activit y/ Fragment 的生命周期绑定在一起，在 Activity / Fragment 生命周期结束时，会结束 flow , flow 结束时会将 Listener 置为 空，有效的避免内存泄漏，所要使用 lifecycleScope 需要添加一下引用。
 
 ```
 implementation "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}"

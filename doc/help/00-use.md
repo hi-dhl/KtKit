@@ -10,7 +10,7 @@ allprojects {
 
 // 模块级 `build.gradle`
 dependencies {
-    
+    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
 }
 ```
 
@@ -25,7 +25,7 @@ repositories {
 
 // 模块级 `build.gradle`
 dependencies {
-    implementation "com.hi-dhl:ktkit:1.0.0-SNAPSHOT"
+    implementation "com.hi-dhl:ktkit:${ktkitVersion}"
 }
 ```
 

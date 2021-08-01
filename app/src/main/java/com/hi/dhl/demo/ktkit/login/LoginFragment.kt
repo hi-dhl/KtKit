@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.hi.dhl.binding.viewbind
-import com.hi.dhl.demo.ktkit.ProfileActivity
 import com.hi.dhl.demo.ktkit.R
 import com.hi.dhl.demo.ktkit.databinding.FragmentLoginBinding
 import com.hi.dhl.demo.ktkit.model.PeopleModel
@@ -43,9 +42,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         fun newInstance1(): Fragment {
             return LoginFragment().makeBundle(
-                ProfileActivity.KEY_USER_NAME to "ByteCode",
-                ProfileActivity.KEY_USER_PASSWORD to "1024",
-                ProfileActivity.KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
+                KEY_USER_NAME to "ByteCode",
+                KEY_USER_PASSWORD to "1024",
+                KEY_PEOPLE_PARCELIZE to PeopleModel("hi-dhl")
             )
         }
 

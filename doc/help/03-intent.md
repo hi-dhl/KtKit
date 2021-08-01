@@ -13,5 +13,16 @@ private val userName by intent<String>(KEY_USER_NAME) {
 
 ```
 
+### 案例
+
+```
+class ProfileActivity : Activity() {
+    private val userPassword by intent<String>(KEY_USER_PASSWORD)
+
+    private val userName by intent<String>(KEY_USER_NAME) {
+        "公众号：ByteCode"
+    }
+}
+```
 
 

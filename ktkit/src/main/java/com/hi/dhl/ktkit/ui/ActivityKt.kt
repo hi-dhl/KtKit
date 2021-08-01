@@ -60,6 +60,8 @@ inline fun <reified T : Activity> Context.startActivity() {
 }
 
 /**
+ * 感谢 Kotlin/anko
+ *
  * Example：
  *
  * ```

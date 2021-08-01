@@ -27,14 +27,16 @@ import kotlin.contracts.ExperimentalContracts
  */
 
 // 感谢 FlowBinding
-fun <E> SendChannel<E>.safeOffer(value: E) = !isClosedForSend && try {
+@kotlin.internal.InlineOnly
+inline fun <E> SendChannel<E>.safeOffer(value: E) = !isClosedForSend && try {
     offer(value)
 } catch (e: CancellationException) {
     false
 }
 
 @CheckResult
-fun View.clickFlow(): Flow<View> {
+@kotlin.internal.InlineOnly
+inline fun View.clickFlow(): Flow<View> {
     return callbackFlow {
         setOnClickListener {
             safeOffer(it)
@@ -50,7 +52,8 @@ fun View.clickFlow(): Flow<View> {
  *     showShortToast("公众号：ByteCode")
  * }
  */
-fun View.click(lifecycle: LifecycleCoroutineScope, onClick: (view: View) -> Unit) {
+@kotlin.internal.InlineOnly
+inline fun View.click(lifecycle: LifecycleCoroutineScope, noinline onClick: (view: View) -> Unit) {
     clickFlow().onEach {
         onClick(this)
     }.launchIn(lifecycle)
@@ -65,10 +68,11 @@ fun View.click(lifecycle: LifecycleCoroutineScope, onClick: (view: View) -> Unit
  *     showShortToast("公众号：ByteCode")
  * }
  */
-fun View.clickDelayed(
+@kotlin.internal.InlineOnly
+inline fun View.clickDelayed(
     lifecycle: LifecycleCoroutineScope,
     delayMillis: Long = 500,
-    onClick: (view: View) -> Unit
+    noinline onClick: (view: View) -> Unit
 ) {
     clickFlow().onEach {
         delay(delayMillis)
@@ -86,10 +90,12 @@ fun View.clickDelayed(
  * }
  */
 var lastMillis: Long = 0
-fun View.clickTrigger(
+
+@kotlin.internal.InlineOnly
+inline fun View.clickTrigger(
     lifecycle: LifecycleCoroutineScope,
     intervalMillis: Long = 500,
-    onClick: (view: View) -> Unit
+    noinline onClick: (view: View) -> Unit
 ) {
     val currtMillis = System.currentTimeMillis()
     if (currtMillis - lastMillis < intervalMillis) {

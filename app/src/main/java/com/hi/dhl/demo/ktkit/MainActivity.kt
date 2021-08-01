@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnDebounce.clickDelayed(lifecycleScope){
-
-        }
         binding.btnDebounce.clickTrigger(lifecycleScope, 1000) {
             onClick(it)
         }

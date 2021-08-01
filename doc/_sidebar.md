@@ -1,4 +1,5 @@
 * [关于 KtKit](menu?id=目录)
+* [版本记录](help/00-release.md)
 * [如何使用](help/00-use.md)    
 * Activiy
 
