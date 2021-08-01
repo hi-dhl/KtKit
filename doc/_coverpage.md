@@ -5,8 +5,6 @@
 </p>
 
 [开始阅读](menu?id=目录) 
-[Blog](https://hi-dhl.com)
-[掘金](https://juejin.im/user/2594503168898744)
-[GitHub]()
+[GitHub](https://github.com/hi-dhl/KtKit)
 
 

@@ -53,6 +53,7 @@ dependencies {
     implementation Depend.binding
     if (remote) {
         implementation Depend.ktkit
+//        implementation Depend.ktkitSnapshot
     } else {
         implementation project(":ktkit")
     }

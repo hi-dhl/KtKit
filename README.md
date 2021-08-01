@@ -5,7 +5,7 @@ KtKit 是用 Kotlin 语言编写的工具箱（长期更新中）
 </p>
 
 <p align="center">
-<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-dhl-4BC51D.svg?style=flat"></a>  &nbsp; <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> &nbsp; <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
+<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-dhl-4BC51D.svg?style=flat"></a>  &nbsp; <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> &nbsp; <a href="https://search.maven.org/search?q=g:%22com.hi-dhl%22%20AND%20a:%22ktkit%22"><img src="https://img.shields.io/maven-central/v/com.hi-dhl/ktkit.svg?label=Maven%20Central"/></a> &nbsp; <a href="https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit"><img src="https://img.shields.io/badge/SNAPSHOT-v1.0.0-9933CC.svg?style=flat"></a> &nbsp; <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/> 
 </p>
 
 <p align="center"> 如果图片无法查看，请点击这里查看 <a href="http://img.hi-dhl.com/intent-act.png"> 图例</a>
@@ -23,7 +23,9 @@ KtKit 是用 Kotlin 语言编写的工具箱，包含了项目中常用的一系
 
 ## Download
 
-**正式版本: 此版本包含稳定版本的 API**
+**正式版本: 此版本包含稳定版本的 API** 
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.hi-dhl/ktkit.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.hi-dhl%22%20AND%20a:%22ktkit%22)
 
 ```
 // Project 级别的 `build.gradle`
@@ -38,14 +40,18 @@ dependencies {
     implementation "com.hi-dhl:ktkit:${ktkitVersion}"
 }
 ```
-
+ 
 **快照版本: 此版本包含最新的 API，版本号点击 [snapshots](https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit/) 前往查看**
+
+<a href="https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit"><img src="https://img.shields.io/badge/SNAPSHOT-v1.0.0-9933CC.svg?style=flat"></a>
+
 
 ```
 // Project 级别的 `build.gradle`
-repositories {
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-
+allprojects {
+    repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
 }
 
 // 模块级 `build.gradle`
@@ -165,7 +171,7 @@ fun newInstance2(): Fragment {
 setSatatusBarColor(android.R.color.darker_gray)
 ```
 
-更多 API 使用方式点击这里前往查看
+更多 API 使用方式点击这里前往查看[在线文档](https://ktkit.hi-dhl.com)
 
 ### 联系我
 

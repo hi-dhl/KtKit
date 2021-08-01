@@ -18,9 +18,10 @@ dependencies {
 
 ```
 // Project 级别的 `build.gradle`
-repositories {
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-
+allprojects {
+    repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
 }
 
 // 模块级 `build.gradle`

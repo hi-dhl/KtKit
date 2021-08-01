@@ -38,7 +38,8 @@ object Versions {
     const val appStartup = "1.0.0"
     const val material = "1.3.0"
     const val binding = "1.1.3"
-    const val ktkit = "1.0.0-SNAPSHOT"
+    const val ktkitSnapshot = "1.0.0-SNAPSHOT"
+    const val ktkit = "1.0.0"
     const val lifecycleVersion = "2.3.0-beta01"
 }
 
@@ -129,6 +130,7 @@ object Depend {
     const val progressview = "com.hi-dhl:progressview:${Versions.progressview}"
     const val binding = "com.hi-dhl:binding:${Versions.binding}"
     const val ktkit = "com.hi-dhl:ktkit:${Versions.ktkit}"
+    const val ktkitSnapshot = "com.hi-dhl:ktkit:${Versions.ktkitSnapshot}"
 }
 
 
