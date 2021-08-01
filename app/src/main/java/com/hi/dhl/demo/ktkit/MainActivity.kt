@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
             val screen = "width = $screenWidth height = $screenHeight density = $density dp2px = ${dp2px(10)} px2dp = ${px2dp(10)}"
             tvScreen.setText(screen)
 //            tvScreen.append("hasNetwork = ${hasNetwork()}")
+
+            imgScreen.setBackgroundColor(color(R.color.purple_500))
+            imgScreen.setImageDrawable(drawable(R.drawable.ic_launcher_foreground))
         }
     }
 

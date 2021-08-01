@@ -10,7 +10,9 @@ import android.os.Build
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import java.lang.ref.WeakReference
 
 /**
@@ -97,3 +99,11 @@ private fun Context.setSatatusBarColor(context: WeakReference<Activity>, @ColorR
         }
     }
 }
+
+// 获取 Drawable
+@kotlin.internal.InlineOnly
+inline fun Context.drawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
+
+// 获取 color
+@kotlin.internal.InlineOnly
+inline fun Context.color(@ColorRes id: Int) = ContextCompat.getColor(this, id)
