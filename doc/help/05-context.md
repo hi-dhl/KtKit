@@ -42,3 +42,14 @@ setSatatusBarColor(android.R.color.darker_gray)
 hasNetwork()
 ```
 
+**通过 drawableResId 获取 drawable**
+
+```
+drawable(R.drawable.id)
+```
+
+**通过 colorResId 获取 color**
+
+```
+color(R.color.id)
+```
