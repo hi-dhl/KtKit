@@ -1,7 +1,8 @@
 # <p align="center"> KtKit </p>
 
 <p align="center">
-KtKit 是用 Kotlin 语言编写的工具库（长期更新中）
+KtKit 小巧而实用，用 Kotlin 语言编写的工具库（长期更新中）<br/>
+<a href="https://ktkit.hi-dhl.com">KtKit 在线阅读：https://ktkit.hi-dhl.com</a> 
 </p>
 
 <p align="center">
@@ -166,13 +167,39 @@ fun newInstance2(): Fragment {
 }
 ```
 
-**设置状态的颜色**
+**一行代码实现点击事件，避免内存泄露**
+
+KtKit 提供了常用的三个 API：单击事件、延迟第一次点击事件、防止多次点击
+
+**单击事件**
 
 ```
-setSatatusBarColor(android.R.color.darker_gray)
+view.click(lifecycleScope) { showShortToast("公众号：ByteCode" }
 ```
 
-更多 API 使用方式点击这里前往查看[在线文档](https://ktkit.hi-dhl.com)
+
+**延迟第一次点击事件**
+
+```
+// 默认延迟时间是 500ms
+view.clickDelayed(lifecycleScope){ showShortToast("公众号：ByteCode" }
+
+// or
+view.clickDelayed(lifecycleScope, 1000){ showShortToast("公众号：ByteCode") }
+```
+
+
+**防止多次点击**
+
+```
+// 默认间隔时间是 500ms
+view.clickTrigger(lifecycleScope){ showShortToast("公众号：ByteCode") }
+
+// or
+view.clickTrigger(lifecycleScope, 1000){ showShortToast("公众号：ByteCode") }
+```
+
+更多 API 使用方式点击这里前往查看 [在线文档](https://ktkit.hi-dhl.com)
 
 ### 联系我
 
