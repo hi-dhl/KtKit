@@ -19,13 +19,19 @@ import kotlin.contracts.ExperimentalContracts
  */
 
 @kotlin.internal.InlineOnly
-inline fun View.visible() = View.VISIBLE
+inline fun View.visible() {
+    visibility = View.VISIBLE
+}
 
 @kotlin.internal.InlineOnly
-inline fun View.gone() = View.GONE
+inline fun View.gone() {
+    visibility = View.GONE
+}
 
 @kotlin.internal.InlineOnly
-inline fun View.invisible() = View.INVISIBLE
+inline fun View.invisible() {
+    visibility = View.INVISIBLE
+}
 
 @kotlin.internal.InlineOnly
 inline fun View.showShortSnackbar(message: String) {
