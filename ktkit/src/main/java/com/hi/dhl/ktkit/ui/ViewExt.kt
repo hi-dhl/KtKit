@@ -3,7 +3,9 @@
 
 package com.hi.dhl.ktkit.ui
 
+import android.graphics.drawable.GradientDrawable
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -72,4 +74,22 @@ inline fun View.showActionSnackBar(
         .setAction(actionName) {
             block()
         }.show()
+}
+
+/**
+ * 快捷设置View的自定义纯色带圆角背景
+ *
+ * @receiver View
+ * @param color Int 颜色值
+ * @param cornerRadius Float 圆角 单位px
+ */
+@kotlin.internal.InlineOnly
+inline fun View.setRoundRectBg(
+    @ColorInt color: Int,
+    cornerRadius: Float = 15F
+) {
+    background = GradientDrawable().apply {
+        setColor(color)
+        setCornerRadius(cornerRadius)
+    }
 }
