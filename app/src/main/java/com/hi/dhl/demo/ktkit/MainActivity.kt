@@ -2,6 +2,7 @@ package com.hi.dhl.demo.ktkit
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -43,6 +44,24 @@ class MainActivity : AppCompatActivity() {
 
             imgScreen.setBackgroundColor(color(R.color.purple_500))
             imgScreen.setImageDrawable(drawable(R.drawable.ic_launcher_foreground))
+
+            binding.editext.textChange(
+                lifecycle = lifecycleScope
+            ) {
+                Log.e(TAG, "textChange = $it")
+            }
+
+            binding.editext.textChangeWithbefore(
+                lifecycle = lifecycleScope
+            ) {
+                Log.e(TAG, "textChangeWithbefore = $it")
+            }
+
+            binding.editext.textChangeWithAfter(
+                lifecycle = lifecycleScope
+            ) {
+                Log.e(TAG, "textChangeWithAfter = $it")
+            }
         }
     }
 
@@ -82,5 +101,9 @@ class MainActivity : AppCompatActivity() {
             val userName = data?.getStringExtra(ProfileActivity.KEY_USER_NAME)
             binding.tvActResult.setText("$result - $userName")
         }
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }
