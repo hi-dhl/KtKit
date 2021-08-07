@@ -88,8 +88,10 @@ inline fun View.setRoundRectBg(
     @ColorInt color: Int,
     cornerRadius: Float = 15F
 ) {
-    background = GradientDrawable().apply {
-        setColor(color)
-        setCornerRadius(cornerRadius)
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        background = GradientDrawable().apply {
+            setColor(color)
+            setCornerRadius(cornerRadius)
+        }
     }
 }

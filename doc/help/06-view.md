@@ -34,5 +34,12 @@ view.showActionSnackBar("公众号：ByteCode","login"){
 }
 ```
 
+**设置 View 纯色背景和圆角, 有效减少创建 shape 文件**
+```
+view.setRoundRectBg(color(R.color.purple_500))
 
+// or
+
+view.setRoundRectBg(color(R.color.purple_500), 30f)
+```
 

@@ -45,19 +45,20 @@ class MainActivity : AppCompatActivity() {
             imgScreen.setBackgroundColor(color(R.color.purple_500))
             imgScreen.setImageDrawable(drawable(R.drawable.ic_launcher_foreground))
 
-            binding.editext.textChange(
+            editext.setRoundRectBg(color(R.color.purple_500), 30f)
+            editext.textChange(
                 lifecycle = lifecycleScope
             ) {
                 Log.e(TAG, "textChange = $it")
             }
 
-            binding.editext.textChangeWithbefore(
+            editext.textChangeWithbefore(
                 lifecycle = lifecycleScope
             ) {
                 Log.e(TAG, "textChangeWithbefore = $it")
             }
 
-            binding.editext.textChangeWithAfter(
+            editext.textChangeWithAfter(
                 lifecycle = lifecycleScope
             ) {
                 Log.e(TAG, "textChangeWithAfter = $it")
