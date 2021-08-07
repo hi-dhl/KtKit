@@ -18,7 +18,7 @@ dependencies {
 
 **快照版本: 此版本包含最新的 API，版本号点击 [snapshots](https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit/) 前往查看**
 
-<a href="https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit"><img src="https://img.shields.io/badge/SNAPSHOT-v1.0.0-9933CC.svg?style=flat"></a>
+<a href="https://oss.sonatype.org/content/repositories/snapshots/com/hi-dhl/ktkit"><img src="https://img.shields.io/badge/SNAPSHOT-v1.0.1-9933CC.svg?style=flat"></a>
 
 ```
 // Project 级别的 `build.gradle`
