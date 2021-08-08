@@ -9,6 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import com.hi.dhl.binding.viewbind
 import com.hi.dhl.demo.ktkit.databinding.ActivityMainBinding
 import com.hi.dhl.demo.ktkit.login.LoginActivity
+import com.hi.dhl.demo.ktkit.model.PeopleModel
+import com.hi.dhl.ktkit.common.fromJson
+import com.hi.dhl.ktkit.common.toJson
 import com.hi.dhl.ktkit.core.*
 import com.hi.dhl.ktkit.ui.*
 import java.util.*
@@ -31,6 +34,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         initView()
+
+        var json = PeopleModel("dhl").toJson()
+        Log.e(TAG, "json = $json  md5 = ${json.md5()}")
+
+        val model = json.fromJson<PeopleModel>()
+        Log.e(TAG, "model = $model")
+
+        json = PeopleModel("dhl").toJson(true)
+        Log.e(TAG, "json = $json")
     }
 
     private fun initView() {

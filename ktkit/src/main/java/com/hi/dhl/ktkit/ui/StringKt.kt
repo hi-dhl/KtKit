@@ -5,6 +5,8 @@ package com.hi.dhl.ktkit.ui
 
 import android.util.Patterns
 import com.google.i18n.phonenumbers.PhoneNumberUtil
+import java.math.BigInteger
+import java.security.MessageDigest
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
@@ -63,4 +65,10 @@ inline fun String.isIPAddress(): Boolean {
 @kotlin.internal.InlineOnly
 inline fun String.isDomainName(): Boolean {
     return this.isNotNullOrEmpty() && Patterns.DOMAIN_NAME.matcher(this).matches()
+}
+
+@kotlin.internal.InlineOnly
+inline fun String.md5(): String {
+    val md = MessageDigest.getInstance("MD5")
+    return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
 }

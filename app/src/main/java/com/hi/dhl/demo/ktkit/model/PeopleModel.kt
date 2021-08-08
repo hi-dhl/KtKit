@@ -12,4 +12,7 @@ import kotlinx.parcelize.Parcelize
  */
 
 @Parcelize
-data class PeopleModel(val name: String) : Parcelable
+data class PeopleModel(
+    val name: String? = null,
+    val address: String? = null
+) : Parcelable

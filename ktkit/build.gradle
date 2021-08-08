@@ -1,9 +1,4 @@
-import com.hi.dhl.plugin.Android
-import com.hi.dhl.plugin.AndroidX
-import com.hi.dhl.plugin.Depend
-import com.hi.dhl.plugin.Fragment
-import com.hi.dhl.plugin.Kt
-import com.hi.dhl.plugin.Lifecycle
+import com.hi.dhl.plugin.*
 
 plugins {
     id 'com.android.library'
@@ -44,16 +39,20 @@ android {
 dependencies {
 
     implementation Kt.kotlinStdlib
+    implementation Kt.coroutinesCore
+    implementation Kt.coroutinesAndroid
+
     implementation AndroidX.coreKtx
     implementation AndroidX.appcompat
     implementation Android.material
     implementation Android.libphonenumber
+
     implementation Fragment.runtime
     implementation Fragment.runtimeKtx
-    implementation Kt.coroutinesCore
-    implementation Kt.coroutinesAndroid
+
     implementation Lifecycle.runtimeKtx
-    implementation Lifecycle.commonJava8
+    implementation Retrofit.gson
+
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore
