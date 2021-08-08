@@ -1,7 +1,7 @@
+* [KtKit 工具库的技巧及解析](https://mp.weixin.qq.com/s/lcLJB0MFaYX1lQXtJ3M88g) 
 * [关于 KtKit](menu?id=目录)
 * [版本记录](help/00-release.md)
-* [如何使用](help/00-use.md)   
-* [KtKit 工具库的技巧及解析](https://mp.weixin.qq.com/s/lcLJB0MFaYX1lQXtJ3M88g)  
+* [如何使用](help/00-use.md)    
 * Activiy
 
     * [获取传递过来的参数](help/03-intent.md)
