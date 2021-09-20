@@ -188,20 +188,20 @@ inline fun makeIntent(
     context: Context,
     targetClass: Class<*>,
     params: () -> Array<out Pair<String, Any>>
-): Intent = with(Intent(context, targetClass)) {
-    params().forEach {
-        makeParams(it)
+): Intent = Intent(context, targetClass).apply {
+    val arry = params()
+    for ((_, value) in arry.withIndex()) {
+        makeParams(value)
     }
-    this
 }
 
 inline fun makeIntent(
     params: () -> Array<out Pair<String, Any>>
-): Intent = with(Intent()) {
-    params().forEach {
-        makeParams(it)
+): Intent = Intent().apply {
+    val arry = params()
+    for ((_, value) in arry.withIndex()) {
+        makeParams(value)
     }
-    this
 }
 
 // 感谢 Kotlin/anko

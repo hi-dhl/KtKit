@@ -84,13 +84,14 @@ inline fun Fragment.makeBundle(
 inline fun Fragment.makeBundle(
     params: () -> Array<out Pair<String, Any>>
 ): Fragment {
-    arguments = with(Bundle()) {
-        params().forEach {
-            makeParams(it)
+    return apply {
+        arguments = Bundle().apply {
+            val arry = params()
+            for ((_, value) in arry.withIndex()) {
+                makeParams(value)
+            }
         }
-        this
     }
-    return this
 }
 
 // 感谢 Kotlin/anko
