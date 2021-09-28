@@ -10,7 +10,6 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import com.hi.dhl.ktkit.ui.safeOffer
@@ -187,7 +186,6 @@ inline fun Context.listenNetworkFlow(type: Int, bindNetWork: Boolean = false) =
                 } else {
                     safeOffer(false)
                 }
-
             }
 
             override fun onAvailable(network: Network) {
@@ -197,7 +195,6 @@ inline fun Context.listenNetworkFlow(type: Int, bindNetWork: Boolean = false) =
                     safeOffer(true)
                 }
             }
-
 
             private fun bindProcessToNetwork(network: Network?): Boolean {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

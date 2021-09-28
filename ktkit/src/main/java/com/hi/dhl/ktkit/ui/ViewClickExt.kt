@@ -97,12 +97,12 @@ inline fun View.clickTrigger(
     intervalMillis: Long = 500,
     noinline onClick: (view: View) -> Unit
 ) {
-    val currtMillis = System.currentTimeMillis()
-    if (currtMillis - lastMillis < intervalMillis) {
-        lastMillis = currtMillis
-        return
-    }
     clickFlow().onEach {
+        val currtMillis = System.currentTimeMillis()
+        if (currtMillis - lastMillis < intervalMillis) {
+            return@onEach
+        }
+        lastMillis = currtMillis
         onClick(this)
     }.launchIn(lifecycle)
 }
